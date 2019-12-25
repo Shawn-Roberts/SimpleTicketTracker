@@ -1,0 +1,19 @@
+﻿@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h3 class="text-danger">Whoops an error occured while processing your request</h3>
+
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+<div>
+    <a asp-page="./Tickets/Index">Return to main page</a>
+</div>

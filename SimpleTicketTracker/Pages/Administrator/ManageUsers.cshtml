@@ -1,0 +1,48 @@
+﻿@page
+@model SimpleTicketTracker.ManageUsersModel
+@{
+    ViewData["Title"] = "Manage Users";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+<h1>Manage Users</h1>
+<div class="FilterForm">
+    <form asp-page="./Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Filter by first or last name
+                <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+                <input type="submit" value="Search" class="btn btn-primary" /> |
+                <a asp-page="./ManageUsers">Clear Filter</a>
+            </p>
+        </div>
+    </form>
+</div>
+
+@if (@Model.ApplicationUsers.Count() > 0)
+{
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tbody>
+                @foreach (var u in Model.ApplicationUsers)
+                {
+                    <tr>
+                        <th scope="row" class="col-lg-1 col-md-1, col-sm-1"><span>@u.FirstName, @u.LastName </span></th>
+                        <td class="col-lg-2 col-md-2, col-sm-2">
+                            <a asp-page="../ManageUser/Manage" asp-route-userId="@u.Id"> <i class="fas fa-edit"></i></a>
+                        </td>
+                        <td class="col-lg-2 col-md-2, col-sm-2">
+                            <a asp-page="./DeleteUser" asp-route-userId="@u.Id"><i class="far fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p> No users found</p>
+}
+<a asp-page="RegisterNewUser" class="btn btn-primary">Add New </a>

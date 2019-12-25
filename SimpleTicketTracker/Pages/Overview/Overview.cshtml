@@ -1,0 +1,92 @@
+﻿@page
+@model SimpleTicketTracker.OverviewModel
+@{
+    ViewData["Title"] = "Overview";
+
+}
+<head>
+    <script src="//cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <script src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+</head>
+
+<div>
+    <div class="col-lg-5 col-md-5 col-sm-5 chart-wrapper">
+        <form method="post">
+            <div>@Html.Raw(Model.ChartJson)</div>
+            <br />
+        </form>
+    </div>
+
+    <div class="col-lg-5 col-md-5 col-sm-5" style="float:right">
+        <div class="table-responsive">
+
+            <table class="table table-striped">
+
+
+                <thead>
+                    <tr>
+                        <th class="th-lg">Name</th>
+                        <th class="th-lg">Value</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+
+                        <td>Count of Projects</td>
+                        <td>4</td>
+
+                    </tr>
+                    <tr>
+
+                        <td>Count of Users</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Count of Tickets</td>
+                        <td>17</td>
+                    </tr>
+                </tbody>
+
+
+            </table>
+
+
+            <div class="table-responsive">
+
+                <table class="table table-striped">
+
+
+                    <thead>
+                        <tr>
+                            <th class="th-lg">Name</th>
+                            <th class="th-lg">Value</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+
+                            <td>Total Hours Worked</td>
+                            <td>1400</td>
+
+                        </tr>
+                        <tr>
+
+                            <td>Largest Ticket Hours</td>
+                            <td>Ticket 6 (100 hours)</td>
+                        </tr>
+                        <tr>
+                            <td>Largest Project Hours</td>
+                            <td>Project 4 (800 hrs)</td>
+                        </tr>
+                    </tbody>
+
+
+                </table>
+            </div>
+
+        </div>
+        <hr />

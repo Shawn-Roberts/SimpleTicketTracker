@@ -1,0 +1,77 @@
+﻿@page
+@model SimpleTicketTracker.CreateTicketModel
+@{
+    ViewData["Title"] = "Create Ticket";
+}
+
+<h4 class="form-heading">Create New Ticket</h4>
+<hr />
+<form method="post">
+    <div class="form-group col-lg-12, col-md-12, col-sm-12">
+        <input type="hidden" asp-for="Ticket.CreationDate" class="form-control" value="@DateTime.UtcNow" />
+        <input hidden asp-for="Ticket.HoursWorked" value="0" class="form-control" />
+        <div class="form-row">
+            <div class="form-group col-lg-12, col-md-12, col-sm-12">
+                <label style="font-weight:bold" asp-for="Ticket.Name" class="control-label"></label>
+                <input asp-for="Ticket.Name" class="form-control" />
+                <span asp-validation-for="Ticket.Name" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-lg-4, col-md-4, col-sm-4 float-right">
+                <label style="font-weight:bold" asp-for="Ticket.ProjectId" class="control-label"></label>
+                <select asp-for="Ticket.ProjectId" asp-items="Model.Projects" class="form-control"></select>
+                <span asp-validation-for="Ticket.ProjectId" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4, col-md-4, col-sm-4 float-right">
+                <label style="font-weight:bold" asp-for="Ticket.OwnerId" class="control-label"></label>
+                <select asp-for="Ticket.OwnerId" asp-items="Model.Owner" class="form-control"></select>
+                <span asp-validation-for="Ticket.OwnerId" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4, col-md-4, col-sm-4 float-right">
+                <label style="font-weight:bold" asp-for="Ticket.PriorityId" class="control-label"></label>
+                <select asp-for="Ticket.PriorityId" asp-items="Model.Priority" class="form-control"></select>
+                <span asp-validation-for="Ticket.PriorityId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-lg-4, col-md-4, col-sm-4 float-right">
+                <label style="font-weight:bold" asp-for="Ticket.TypeId" class="control-label"></label>
+                <select asp-for="Ticket.TypeId" asp-items="Model.RequestType" class="form-control"></select>
+                <span asp-validation-for="Ticket.TypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4, col-md-4, col-sm-4 float-right">
+                <label style="font-weight:bold" asp-for="Ticket.StatusId" class="control-label"></label>
+                <select asp-for="Ticket.StatusId" asp-items="Model.Status" class="form-control"></select>
+                <span asp-validation-for="Ticket.StatusId" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4, col-md-4, col-sm-4 float-right">
+                <label style="font-weight:bold" asp-for="Ticket.DueDate" class="control-label"></label>
+                <input type="date" asp-for="Ticket.DueDate" class="form-control" min="@DateTime.Now" />
+                <span asp-validation-for="Ticket.DueDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <label style="font-weight:bold" asp-for="Ticket.Description" class="control-label"></label>
+            <textarea class=" ProjectDescription form-control" asp-for="Ticket.Description" rows="5"></textarea>
+            <span asp-validation-for="Ticket.Description" class="text-danger"></span>
+        </div>
+        <hr />
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+
+
+<div>
+    <a asp-page="TicketList">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

@@ -1,0 +1,34 @@
+﻿@page "{userId:int}"
+@model SimpleTicketTracker.DeleteUserModel
+@{
+    ViewData["Title"] = "Delete User";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1 class="form-heading">Delete User: @Model.ApplicationUser.FirstName @Model.ApplicationUser.LastName?</h1>
+
+<div class="table-responsive">
+    <div class="col-lg-5 col-md-5 col-sm-10 user-table">
+        <hr />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ApplicationUser.FirstName"></label>
+            <input asp-for="ApplicationUser.FirstName" class="form-control" disabled />
+            <span asp-validation-for="ApplicationUser.FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ApplicationUser.LastName"></label>
+            <input asp-for="ApplicationUser.LastName" class="form-control" disabled />
+            <span asp-validation-for="ApplicationUser.LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ApplicationUser.Email"></label>
+            <input asp-for="ApplicationUser.Email" class="form-control" disabled />
+            <span asp-validation-for="ApplicationUser.Email" class="text-danger"></span>
+        </div>
+        <form method="post">
+            <input type="hidden" asp-for="ApplicationUser.Id" />
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+</div>
